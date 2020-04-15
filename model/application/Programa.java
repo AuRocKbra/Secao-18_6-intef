@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import model.entities.Aluguel;
 import model.entities.Modelo;
+import model.services.ImpostoBrasil;
 import model.services.ServicoDeAluguel;
 
 public class Programa {
@@ -27,7 +28,7 @@ public class Programa {
 		Double taxaPorHora = sc.nextDouble();
 		System.out.print("Taxa da diária:");
 		Double taxaDaDiaria = sc.nextDouble();
-		ServicoDeAluguel servico = new ServicoDeAluguel(taxaPorHora, taxaDaDiaria);
+		ServicoDeAluguel servico = new ServicoDeAluguel(taxaPorHora, taxaDaDiaria, new ImpostoBrasil());
 		servico.processaServico(aluguel);
 		System.out.println("Recibo:");
 		System.out.println("Valor base: R$"+String.format("%.2f",aluguel.getRecibo().getValorBase()));

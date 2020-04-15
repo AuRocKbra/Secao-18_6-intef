@@ -12,9 +12,10 @@ public class ServicoDeAluguel {
 		
 	}
 
-	public ServicoDeAluguel(Double valorPorHora, Double valorDaDiaria) {
+	public ServicoDeAluguel(Double valorPorHora, Double valorDaDiaria, Imposto imposto) {
 		this.valorPorHora = valorPorHora;
 		this.valorDaDiaria = valorDaDiaria;
+		this.imposto = imposto;
 	}
 
 	public Double getValorPorHora() {
@@ -43,7 +44,6 @@ public class ServicoDeAluguel {
 		else {
 			valorBase = Math.ceil(tempo/24) * valorDaDiaria;
 		}
-		imposto = new ImpostoBrasil();
 		Double taxa = imposto.getTaxa(valorBase);
 		aluguel.setRecibo(new Recibo(valorBase, taxa));
 	}
